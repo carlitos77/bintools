@@ -4,11 +4,25 @@ A set of command line tools.
 
 ## cdp
 
+Shortcut cd to directory.
+
+Usage:
+
+    $ cdp                       # print list of shortcut
+    $ cdp .                     # add current dir to shortcut list
+    $ cdp <prefix_string>       # cd to shortcut dir
+
 ### Installation
 
 Source the cdp.bashrc file in your .bashrc
 
 ## cdg
+
+cd to the first anchestor dir containing .git
+
+Usage:
+
+    $ cdg
 
 ### Installation
 
