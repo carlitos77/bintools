@@ -5,6 +5,7 @@ A set of command line tools.
 ## cdp
 
 Shortcut cd to directory.
+Saved shortcuts are in file ~/.cdprojects.
 
 Usage:
 
@@ -18,7 +19,7 @@ Source the cdp.bashrc file in your .bashrc
 
 ## cdg
 
-cd to the first anchestor dir containing .git
+cd to the first anchestor directory containing .git.
 
 Usage:
 
@@ -26,7 +27,7 @@ Usage:
 
 ### Installation
 
-Source the cdg.bashrc file in your .bashrc
+Source the cdg.bashrc file in your .bashrc.
 
 ## git-cip
 
