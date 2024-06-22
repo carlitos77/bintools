@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+#   Show and edit ssh config file.
+#
+#   Usage:
+#
+#       sshconfig 
+#           Outputs ~/.ssh/config
+#
+#       sshconfig -e
+#           Edit file ~/.ssh/config using vi
+#
+
+cd
+
+if [ $# -eq 0 ] 
+then
+    cat .ssh/config
+    exit 0
+fi
+
+if [[ "$1" == "-e" ]]
+then
+    vi .ssh/config
+fi
+

@@ -1,0 +1,40 @@
+#!/bin/bash
+FROM=$1
+TO=$2
+
+#TEMPFILE=`tempfile --prefix=sddr`
+TEMPFILE="/tmp/.seddar"$RANDOM
+>$TEMPFILE
+
+MATCHLIST=`grep -lr $FROM *`
+
+N=`echo $MATCHLIST|wc -w`
+I=1
+
+echo -e "$MATCHLIST"
+read -p "$N matches $FROM.  Enter to continue"
+
+for FILE in $MATCHLIST
+do
+    clear
+    grep -ns --color $FROM $FILE
+    echo
+    echo -e "($I/$N) $FILE $FROM --> $TO"
+    read -p "Substitute with $TO? [yN]" APPLY
+
+    I=$((I+1))
+
+    if [ "$APPLY" == "y" ]
+    then
+        sed -e "s/$FROM/$TO/g" $FILE >$TEMPFILE
+        grep -ns --color $TO $TEMPFILE
+        read -p "Save? [yN]" APPLY
+        
+        if [ "$APPLY" == "y" ]
+        then
+            cp $TEMPFILE $FILE
+        fi
+    fi
+done
+
+rm $TEMPFILE
