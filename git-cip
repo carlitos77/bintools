@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Commit all and push to remote
+#
+#   Usage: git cip [message]
+
+MESSAGE_CIP="CIP! ¯\_(ツ)_/¯ "
+
+MESSAGE="$1"
+
+if [ -z "$1" ]
+then
+    # no message from arguments
+    # add list of modified files
+    MESSAGE=$(git status -s -uno | awk '{print}' ORS=' ' | head -c 60)
+fi
+
+git status -s -uno
+git commit -a -m "$MESSAGE_CIP $MESSAGE"  && git push
+
